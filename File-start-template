@@ -1,0 +1,31 @@
+#### set  vim ####
+filetype on
+set autoindent
+set showmatch
+autocmd BufNewFile *.py,*.sh exec ":call SetTitle()"
+function SetTitle()
+if &filetype == 'sh'
+        call setline(1,"\#########################################################################")
+        call append(line("."), "\# File Name: ".expand("%"))
+        call append(line(".")+1, "\# Author: Wu Yanghao")
+        call append(line(".")+2, "\# mail: wuyanghao@huawei.com")
+        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+        call append(line(".")+4, "\#########################################################################")
+        call append(line(".")+5, "\#!/bin/bash")
+        call append(line(".")+6, "")
+else
+        call setline(1,"\#########################################################################")
+        call append(line("."), "\# File Name: ".expand("%"))
+        call append(line(".")+1, "\# Author: Wu Yanghao")
+        call append(line(".")+2, "\# mail: wuyanghao@huawei.com")
+        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+        call append(line(".")+4, "\#########################################################################")
+        call append(line(".")+5, "\#!/usr/bin/python")
+        call append(line(".")+6, "")
+endif
+autocmd BufNewFile * normal G
+endfunction
+set ts=4
+set expandtab
+set autoindent
+#### set  vim ####
