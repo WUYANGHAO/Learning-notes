@@ -1,0 +1,59 @@
+一、python保留字【保留字即关键字，我们不能把它们用作任何标识符名称】
+>>> import keyword
+>>> keyword.kwlist
+['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except',
+'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return',
+'try', 'while', 'with', 'yield']
+
+二、注释
+Python中单行注释以 # 开头【每行#之后的即为注释】
+#!/usr/bin/python3
+# 第一个注释
+print ("Hello, Python!") # 第二个注释
+
+三、行与缩进
+python最具特色的就是使用缩进来表示代码块，不需要使用大括号({})。
+【缩进的空格数是可变的，但是同一个代码块的语句必须包含相同的缩进空格数】
+if True:
+    print ("Answer")
+    print ("True")
+else:
+    print ("Answer")
+  print ("False")    # 缩进不一致，会导致运行错误
+  
+四、多行语句
+Python 通常是一行写完一条语句，但如果语句很长，我们可以使用反斜杠(\)来实现多行语句
+total = item_one + \
+        item_two + \
+        item_three
+【注】在 [], {}, 或 () 中的多行语句，不需要使用反斜杠(\)
+total = ['item_one', 'item_two', 'item_three',
+        'item_four', 'item_five']
+
+五、数据类型
+python中数有四种类型：整数、长整数、浮点数和复数
+整数， 如 1
+长整数 是比较大的整数
+浮点数 如 1.23、3E-2
+复数 如 1 + 2j、 1.1 + 2.2j
+
+六、字符串
+python中单引号和双引号使用完全相同。
+使用三引号('''或""")可以指定一个多行字符串。
+转义符 '\'
+自然字符串， 通过在字符串前加r或R。 如 r"this is a line with \n" 则\n会显示，并不是换行。
+python允许处理unicode字符串，加前缀u或U， 如 u"this is an unicode string"。
+字符串是不可变的。
+按字面意义级联字符串，如"this " "is " "string"会被自动转换为this is string
+word = '字符串'
+sentence = "这是一个句子。"
+paragraph = """这是一个段落，
+可以由多行组成"""
+
+七、等待用户输入
+执行下面的程序在按回车键后就会等待用户输入：
+#!/usr/bin/python3
+input("\n\n按下 enter 键后退出。")
+
+
+
