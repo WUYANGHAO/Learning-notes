@@ -62,9 +62,9 @@ function install_tomcat(){
     echo -e "[ $(date) ] Start install tomcat" | tee -a $LOG_FILE
     echo -e "[ $(date) ] Start uncompress tomcat package" | tee -a $LOG_FILE
     tar -zxvf $TOMCAT_PKG -C /usr/local 1>/dev/null 2>&1
-    if [ -f /usr/local/tomcat/bin/catalina.sh ];then
+    if [ -f /usr/local/$(ls /usr/local/| grep tomcat)/bin/catalina.sh ];then
         echo -e "[ $(date) ] tomcat install succeed" | tee -a $LOG_FILE
-        /usr/local/tomcat/bin/catalina.sh start
+        /usr/local/$(ls /usr/local/| grep tomcat)/bin/catalina.sh start
         if [ $? = 0 ];then
             echo -e "[ $(date) ] tomcat start succeed" | tee -a $LOG_FILE
         else
@@ -99,13 +99,13 @@ function config_file_server(){
     fi
     #创建文件列表配置
     echo -e "[ $(date) ] Configuration file list function" | tee -a $LOG_FILE
-    DOWNLOAD_CONFIG_FILE=/usr/local/tomcat/conf/Catalina/localhost/download.xml
+    DOWNLOAD_CONFIG_FILE=/usr/local/$(ls /usr/local/| grep tomcat)/conf/Catalina/localhost/download.xml
     echo -e "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" >$DOWNLOAD_CONFIG_FILE
     echo -e "<Context path=\"/download\" docBase=\"/$A_PATH\" crossContext=\"true\">" >>$DOWNLOAD_CONFIG_FILE
     echo -e "</Context>" >>$DOWNLOAD_CONFIG_FILE
     #修改web.xml
     echo -e "[ $(date) ] change web.xml" | tee -a $LOG_FILE
-    WEB_FILE=/usr/local/tomcat/conf/web.xml
+    WEB_FILE=/usr/local/$(ls /usr/local/| grep tomcat)/conf/web.xml
     cat $WEB_FILE | grep -n "<param-value>true</param-value>" | grep 112 1>/dev/null 2>&1
     if [ $? = 0 ];then
         echo -e "[ $(date) ] Config file list function succeed " | tee -a $LOG_FILE
@@ -116,8 +116,8 @@ function config_file_server(){
 }
 function restart_tomcat(){
     echo -e "[ $(date) ] Restart Tomcat " | tee -a $LOG_FILE
-    /usr/local/tomcat/bin/catalina.sh stop
-    /usr/local/tomcat/bin/catalina.sh start
+    /usr/local/$(ls /usr/local/| grep tomcat)/bin/catalina.sh stop
+    /usr/local/$(ls /usr/local/| grep tomcat)/bin/catalina.sh start
     if [ $? != 0 ];then
         echo -e "[ $(date) ] create_file_server failed" | tee -a $LOG_FILE
     else
