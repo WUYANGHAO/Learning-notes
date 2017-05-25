@@ -1,7 +1,8 @@
 #!/usr/bin/python
-year=int(input("年份"))
-month=int(input("月份:"))
-day=int(input("日期"))
+prin ("计算某年月日是一年中的第几天")
+year=int(input("请输入年份"))
+month=int(input("请输入月份:"))
+day=int(input("请输入日期"))
 sum_ping=[31,28,31,30,31,30,31,31,30,31,30,31]
 sum_run=[31,29,31,30,31,30,31,31,30,31,30,31]
 yy,i=0,1
@@ -14,4 +15,4 @@ else:
                 yy=yy+sum_ping[i]
                 i+=1
 dd=yy+day
-print (month,"月",day,"日是本年第",dd,"天")
+print (year,"年",month,"月",day,"日是本年第",dd,"天")
