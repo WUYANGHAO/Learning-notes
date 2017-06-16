@@ -10,9 +10,23 @@ public class Main {
 		Scanner sc=new Scanner(System.in);
 		while (sc.hasNext()) {
 			String str=sc.nextLine();
-			if(str.length()<=128){
+			if(str.length()>0 && str.length()<=128){
 				String[] list=str.split(",");
-				
+				int[] arr=new int[list.length];
+				for(int i=0;i<list.length;i++){
+					arr[i]=Integer.valueOf(list[i]);
+				}
+				Arrays.sort(arr);
+				if(arr.length==1){
+					System.out.println("最大值和次大值相等，为"+arr[1]);
+				}else {
+					System.out.println("最大值为："+arr[arr.length-1]);
+					System.out.println("次大值为："+arr[arr.length-2]);
+				}
+			}else if (str.length()==0) {
+				System.out.println("0");
+			}else {
+				System.out.println("ERROR:输入字符串长度超过128");
 			}
 		}
 	}
