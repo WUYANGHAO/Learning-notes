@@ -131,5 +131,5 @@ function Main(){
     ADD_ZONE $DNS_NAME $LVS_IP $PORTAL_IP $REPOSITORY_IP && ADD_IP_ZONE $DNS_NAME $LVS_IP $PORTAL_IP $REPOSITORY_IP && echo -e "=====添加DNS服务zone文件完成"
     service named restart && echo -e "====================配置DNS服务成功===================="
 }
-#####程序开始#####
+#####程序开始######
 Main
